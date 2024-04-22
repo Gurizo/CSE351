@@ -1,0 +1,71 @@
+*****************************
+* Lab 4 Synthesis Questions *
+*****************************
+Name(s): Lucas Cho, Karl Ma  
+NetID(s): thcho19, mengym3
+
+
+-----------------------------------------------------------
+1) Instructions in the nested loops that access memory
+   lab0.d:    <22>
+   List of instructions for lab0.d:
+340   400987:       48 89 45 d0             mov    %rax,-0x30(%rbp)
+341   40098b:       c7 45 ec 00 00 00 00    movl   $0x0,-0x14(%rbp)
+343   400994:       c7 45 e8 00 00 00 00    movl   $0x0,-0x18(%rbp)
+345   40099d:       c7 45 e4 00 00 00 00    movl   $0x0,-0x1c(%rbp)
+347   4009a6:       8b 55 ec                mov    -0x14(%rbp),%edx
+348   4009a9:       8b 45 e8                mov    -0x18(%rbp),%eax
+350   4009af:       8b 55 e4                mov    -0x1c(%rbp),%edx
+351   4009b2:       8b 4d e8                mov    -0x18(%rbp),%ecx
+352   4009b5:       8b 45 ec                mov    -0x14(%rbp),%eax
+353   4009b8:       89 ce                   mov    %ecx,%esi
+354   4009ba:       89 c7                   mov    %eax,%edi
+359   4009cb:       48 8b 45 d8             mov    -0x28(%rbp),%rax
+360   4009cf:       48 01 d0                add    %rdx,%rax
+361   4009d2:       8b 55 e4                mov    -0x1c(%rbp),%edx
+362   4009d5:       01 da                   add    %ebx,%edx
+363   4009d7:       89 10                   mov    %edx,(%rax)
+364   4009d9:       83 45 e4 01             addl   $0x1,-0x1c(%rbp)
+365   4009dd:       81 7d e4 f3 01 00 00    cmpl   $0x1f3,-0x1c(%rbp)
+367   4009e6:       83 45 e8 01             addl   $0x1,-0x18(%rbp)
+368   4009ea:       81 7d e8 f3 01 00 00    cmpl   $0x1f3,-0x18(%rbp)
+370   4009f3:       83 45 ec 01             addl   $0x1,-0x14(%rbp)
+371   4009f7:       81 7d ec f3 01 00 00    cmpl   $0x1f3,-0x14(%rbp)
+   lab0opt.d: <14>
+   List of instructions for lab0opt.d:
+336   400992:       48 89 c3                mov    %rax,%rbx
+338   40099c:       45 31 c0                xor    %r8d,%r8d
+340   4009a6:       44 89 c7                mov    %r8d,%edi
+341   4009a9:       0f 1f 80 00 00 00 00    nopl   0x0(%rax)
+342   4009b0:       31 d2                   xor    %edx,%edx
+343   4009b2:       66 0f 1f 44 00 00       nopw   0x0(%rax,%rax,1)
+345   4009bb:       89 0c 96                mov    %ecx,(%rsi,%rdx,4)
+346   4009be:       48 83 c2 01             add    $0x1,%rdx
+347   4009c2:       48 81 fa f4 01 00 00    cmp    $0x1f4,%rdx
+349   4009cb:       48 81 c6 d0 07 00 00    add    $0x7d0,%rsi
+350   4009d2:       83 c7 01                add    $0x1,%edi
+351   4009d5:       48 39 c6                cmp    %rax,%rsi
+353   4009da:       41 83 c0 01             add    $0x1,%r8d
+355   4009e5:       41 81 f8 f4 01 00 00    cmp    $0x1f4,%r8d
+-----------------------------------------------------------
+2) Where are the loop variables stored in lab0.d:
+   i: %edi
+   j: %esi
+   k: %edx
+-----------------------------------------------------------
+3) Corresponding values in lab0opt.d:
+   %edx: k
+   %ecx: k+j+i
+-----------------------------------------------------------
+4) Effect on number of misses:
+
+   Explain:
+
+
+-----------------------------------------------------------
+5) Effect on number of misses:
+
+   Explain:
+
+
+-----------------------------------------------------------

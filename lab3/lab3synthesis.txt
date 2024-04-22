@@ -1,0 +1,30 @@
+*****************************
+* Lab 3 Synthesis Questions *
+*****************************
+Name(s): Lucas Cho, Karl Ma  
+NetID(s): thcho19, mengym3
+
+
+-----------------------------------------------------------
+1) Explain:  0x4025a9 which is the value of %rip at address 0x7fffffffe098 get corrupted. This value was corrupted to a value in the array, which is 0x2c when the len is greater or equal to 15. So the return address is rewritten to 0x2c, the instruction <part_2 + 63> ret     is the one cause the segmentation fault to occur at the moment it is executed.
+
+
+
+-----------------------------------------------------------
+2) Instruction 1: <part_2 + 0> sub $0x48,%rsp
+   Purpose: allocate 0x48 spaces for the part_2 function on the stack.
+
+   Instruction 2: <part_2 + 14> lea 0x10(%rsp),%rax
+   Purpose: store the pointer of the beginning of an array to %rax, this pointer is 0x10 bytes higher than the stack pointer.
+
+   Minimum length to cause a seg fault: 15
+   Calculation:(0x48-0x10) = 0x38 = 56 since it's an array of int, the size of each element is 4 bytes.
+		56 = 4 * (x - 1)    x = 15
+		Thus if we use 15 or more element in the array, it will cause a seg fault.
+-----------------------------------------------------------
+3) Agree or Disagree:Disagree
+   Explain: Creating an array on heap would likely to reduce  the posibility of occuring segmentation fault since heap grows upwards to higher address and it is less likely to change the return address than stack. But it can not remove all posibility of occuring seg fault.
+
+
+
+-----------------------------------------------------------

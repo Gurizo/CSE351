@@ -1,0 +1,27 @@
+******************************
+* Lab 1b Synthesis Questions *
+******************************
+Name(s): Lucas Cho, Karl Ma 
+NetID(s): thcho19, mengym3
+
+
+-----------------------------------------------------------
+1) Benefit 1: larger number of unique item ids: If we use the upper 8 bits for the item id, we are allowed to represent a larger number of unique item ids because we used 6 bits(which is smaller than 8 bit) to represent the unique item id previously.
+
+   Benefit 2: Improved space utilization: If we use lower 8 bits as an integer for the number of items instead of 10 bits, we can utilize the space storage more efficiently as the max number of items in one section increases from 10 to 255. This allow us to efficiently utilize the data storage for the item spaces.
+ 
+   Benefit 3: Readable item count update: Instead of performing bitwise operations on individual bits, we can directly modify the int value. This allows the code to be more readable as we do not need to visually consider the bitwise operations using bitmask. 
+
+   Drawback: Possible overflow for item count: If the item count exceeds 255 (the max value representable by 8 bits), it will overflow and wrap around, leading to incorrect counts. This limitation may be problematic if sections need to accommodate a large number of items.
+
+-----------------------------------------------------------
+2) Difference? Y
+
+   Explain: Yes, because without knowing the type of y, we cannot guarantee that those two ys have the exact same value. For instance, if the y of y = -1 is declared as a signed int and y of y= 0xFFFFFFFF is declared as unsigned int, the second y would represent 4294967295 in decimal while the first y would be still -1 stored as 0xFFFFFFFF in two’s complement. Therefore, without knowing the type of the y declared, the interpretation of the values might be different depending on the unknown signedness of the ys.
+
+-----------------------------------------------------------
+3) Explain: Floating-point numbers have limited precision due to the finite number of bits used for their representation. As a result, many real numbers cannot be represented exactly, leading to rounding errors in arithmetic operations. These rounding errors can accumulate and affect the equality comparison.
+Furthermore, Floating-point operations may result in with small errors, especially in complex calculations involving addition, subtraction, multiplication, and division. These errors can in small differences between two floating-point values that are expected to be equal.
+
+   Considerations: Instead of using == or !=, we can use the following formula, |a - b| < epsilon, where a and b are the value I expect to be equal, and epsilon is the threshold that I know to be enough due to, for example, rounding.
+
